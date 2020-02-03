@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00a4d3"
+    tools:context="apps.ejemplo.expresaEmoApps.PresionaConoce">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:paddingTop="?attr/dialogPreferredPadding"
+            android:paddingBottom="?attr/dialogPreferredPadding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="64dp"
+                    android:layout_height="50dp"
+                    android:onClick="regresarHome"
+                    android:src="@drawable/home" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Space
+                    android:layout_width="207dp"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:onClick="nuevaActividad"
+                    android:src="@drawable/next" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="?attr/dialogPreferredPadding"
+            android:paddingBottom="?attr/dialogPreferredPadding"
+            android:src="@drawable/presionareconoce" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:paddingTop="?attr/dialogPreferredPadding">
+
+            <ImageView
+                android:id="@+id/feliz"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                android:src="@drawable/alegre" />
+
+            <ImageView
+                android:id="@+id/asustado"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                android:src="@drawable/miedo" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="horizontal"
+            android:paddingTop="?attr/dialogPreferredPadding">
+
+            <ImageView
+                android:id="@+id/enojado"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                android:src="@drawable/enojo" />
+
+            <ImageView
+                android:id="@+id/triste"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_weight="1"
+                android:src="@drawable/triste" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
