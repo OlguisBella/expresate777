@@ -3,8 +3,10 @@ package apps.ejemplo.expresaEmoApps;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -19,8 +21,9 @@ public class juego extends AppCompatActivity {
     ImageView feliz, triste, asustado, enojado, next;
 
     SharedPreferences sharedpreferences;
+    ConexionSQLiteHelper db;
 
-    boolean estado, estadoRespuesta;
+    boolean estado, estadoRespuesta, pararActividades;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class juego extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences("Resultados", MODE_PRIVATE);
 
+        db = new ConexionSQLiteHelper(this.getBaseContext());
 
         next= findViewById(R.id.next);
         next.setVisibility(View.INVISIBLE);
@@ -81,6 +85,7 @@ public class juego extends AppCompatActivity {
         background.start();
 
         estadoRespuesta=true;
+        pararActividades=true;
         estado= false;
     }
     public void regresarHome(View v){
@@ -96,26 +101,29 @@ public class juego extends AppCompatActivity {
         background.stop();
     }
     public void analizarRespuesta(int numero){
+        SQLiteDatabase database = db.getReadableDatabase();
         SharedPreferences.Editor editor = sharedpreferences.edit();
         estado=true;
-        if (numero<4){
-            error.start();
-            next.setVisibility(View.VISIBLE);
-            if(estadoRespuesta){
-                estadoRespuesta=false;
-                editor.putInt("p1",0);
-                editor.commit();
-            }
-        }else {
-            bien.start();
-            next.setVisibility(View.VISIBLE);
-            if(estadoRespuesta){
-                estadoRespuesta=false;
-                editor.putInt("p1",1);
-                editor.commit();
+        if (pararActividades){
+            if (numero<4){
+                error.start();
+                next.setVisibility(View.VISIBLE);
+                if(estadoRespuesta){
+                    estadoRespuesta=false;
+                    editor.putInt("p1",0);
+                    editor.commit();
+                }
+            }else {
+                bien.start();
+                next.setVisibility(View.VISIBLE);
+                if(estadoRespuesta){
+                    estadoRespuesta=false;
+                    editor.putInt("p1",1);
+                    editor.commit();
+                }
             }
         }
-
+        pararActividades=false;
     }
     public void nuevaActividad(View v){
         if(estado){

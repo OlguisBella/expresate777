@@ -7,7 +7,6 @@
     android:background="#ffffff"
     tools:context="apps.ejemplo.expresaEmoApps.MainActivity">
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
